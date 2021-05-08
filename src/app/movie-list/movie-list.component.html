@@ -1,0 +1,10 @@
+<div class="movies">
+    <section *ngFor="let movie of movies">
+        <mat-card>
+            <h1> {{movie.name}} </h1>
+            <h2> {{ movie.releaseDate | date }} </h2>
+            <h3> ${{ movie.earning }} million </h3>
+        </mat-card>
+    </section>
+</div>
+
