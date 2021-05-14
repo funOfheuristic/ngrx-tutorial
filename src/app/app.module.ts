@@ -12,6 +12,7 @@ import { InMemoryService } from './Service/in-memory.service';
 import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { environment } from '../environments/environment';
+import { movieReducer } from './Store/Reducers/movie.reducers';
 // import { reducers, metaReducers } from './reducers';
 
 @NgModule({
@@ -24,9 +25,7 @@ import { environment } from '../environments/environment';
     MaterialModules,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryService),
-    // StoreModule.forRoot(reducers, {
-    //   metaReducers,
-    // }),
+    StoreModule.forRoot({ movies: movieReducer }),
   ],
   providers: [],
   bootstrap: [AppComponent],
