@@ -1,5 +1,5 @@
 <div class="movies">
-    <section *ngFor="let movie of movies">
+    <section *ngFor="let movie of movies$ | async">
         <mat-card>
             <h1> {{movie.name}} </h1>
             <h2> {{ movie.releaseDate | date }} </h2>

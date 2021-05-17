@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { environment } from '../environments/environment';
 import { movieReducer } from './Store/Reducers/movie.reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 // import { reducers, metaReducers } from './reducers';
 
 @NgModule({
@@ -26,6 +27,7 @@ import { movieReducer } from './Store/Reducers/movie.reducers';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryService),
     StoreModule.forRoot({ movies: movieReducer }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent],

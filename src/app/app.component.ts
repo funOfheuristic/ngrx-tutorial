@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   movies: Movie[] = [];
   newMovie: Movie = new Movie();
   title = 'movieApp';
-  constructor(private dataService: DataService, private store: Store) {}
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
     this.getAllMovies();
@@ -21,16 +21,16 @@ export class AppComponent implements OnInit {
 
   getAllMovies(): void {
     this.store.dispatch(getMovies());
-    this.dataService.getMovies().subscribe((movies: Movie[]) => {
-      this.movies = movies;
-    });
+    // this.dataService.getMovies().subscribe((movies: Movie[]) => {
+    //   this.movies = movies;
+    // });
   }
 
   addNewMovies(): void {
     this.store.dispatch(addMovies(this.newMovie));
-    this.dataService.addMovies(this.newMovie).subscribe((res) => {
-      this.getAllMovies();
-      this.newMovie = new Movie();
-    });
+    // this.dataService.addMovies(this.newMovie).subscribe((res) => {
+    //   this.getAllMovies();
+    //   this.newMovie = new Movie();
+    // });
   }
 }
