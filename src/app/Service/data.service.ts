@@ -11,7 +11,7 @@ export class DataService {
   private url = 'api/movies/';
   constructor(private http: HttpClient) {}
 
-  getMovies(): Observable<Movie[]> {
+  getMovies(): Observable<ReadonlyArray<Movie>> {
     return this.http.get<Movie[]>(this.url).pipe(
       catchError((error: HttpErrorResponse) => {
         console.error(error);
