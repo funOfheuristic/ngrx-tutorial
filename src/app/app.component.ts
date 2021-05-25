@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
 
   addNewMovies(): void {
     this.store.dispatch(addMovies(this.newMovie));
+    this.newMovie = new Movie();
     // this.dataService.addMovies(this.newMovie).subscribe((res) => {
     //   this.getAllMovies();
     //   this.newMovie = new Movie();

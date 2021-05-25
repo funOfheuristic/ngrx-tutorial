@@ -14,6 +14,8 @@ import { StoreModule } from '@ngrx/store';
 import { environment } from '../environments/environment';
 import { movieReducer } from './Store/Reducers/movie.reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { MovieEffects } from './Store/Effects/movie.effects';
 // import { reducers, metaReducers } from './reducers';
 
 @NgModule({
@@ -27,7 +29,11 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryService),
     StoreModule.forRoot({ movies: movieReducer }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
+    EffectsModule.forRoot([MovieEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

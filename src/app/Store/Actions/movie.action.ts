@@ -4,7 +4,8 @@ import { Movie } from '../../Models/movie';
 export const getMovies = createAction('[Movie] Get movie');
 export const getMoviesSuccess = createAction(
   '[Movie] Get movie success',
-  (movies: ReadonlyArray<Movie>) => movies
+  // (movies: ReadonlyArray<Movie>) => movies
+  props<{ movies: ReadonlyArray<Movie> }>()
 );
 export const addMovies = createAction(
   '[Movie] Add movie',
@@ -13,5 +14,6 @@ export const addMovies = createAction(
 );
 export const addMoviesSuccess = createAction(
   '[Movie] Add movie success',
-  props<{ movie: Movie }>()
+  // props<{ movie: Movie }>(),
+  (movie: Movie) => movie
 );

@@ -2,7 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 import { Movie } from 'src/app/Models/movie';
 import {
   addMovies,
-  getMovies,
+  addMoviesSuccess,
   getMoviesSuccess,
 } from '../Actions/movie.action';
 
@@ -14,6 +14,6 @@ const initialState: ReadonlyArray<Movie> = [];
 
 export const movieReducer = createReducer(
   initialState,
-  on(getMoviesSuccess, (state, movies) => [...movies]),
-  on(addMovies, (state, movie) => [...state, movie])
+  on(getMoviesSuccess, (state, { movies }) => [...movies]),
+  on(addMoviesSuccess, (state, movie) => [...state, movie])
 );
