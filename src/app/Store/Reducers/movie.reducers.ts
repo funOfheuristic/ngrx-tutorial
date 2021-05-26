@@ -15,5 +15,5 @@ const initialState: ReadonlyArray<Movie> = [];
 export const movieReducer = createReducer(
   initialState,
   on(getMoviesSuccess, (state, { movies }) => [...movies]),
-  on(addMoviesSuccess, (state, movie) => [...state, movie])
+  on(addMoviesSuccess, (state, { movie }) => [...state, movie])
 );

@@ -17,7 +17,7 @@ export class MovieEffects {
       ofType(getMovies),
       exhaustMap(() =>
         this.dataService.getMovies().pipe(
-          map((movies) => getMoviesSuccess({ movies })),
+          map((movies) => getMoviesSuccess(movies)),
           catchError(() => EmptyError)
         )
       )
@@ -28,9 +28,9 @@ export class MovieEffects {
     this.action$.pipe(
       ofType(addMovies),
       tap((movie) => console.log(movie)),
-      concatMap((newMovie) =>
-        this.dataService.addMovies(newMovie).pipe(
-          map((movie) => addMoviesSuccess(movie)),
+      concatMap(({ movie }) =>
+        this.dataService.addMovies(movie).pipe(
+          map((newMovie) => addMoviesSuccess(newMovie)),
           catchError(() => EmptyError)
         )
       )
