@@ -11,8 +11,8 @@ export class DataService {
   private url = 'api/movies/';
   constructor(private http: HttpClient) {}
 
-  getMovies(): Observable<Movie[]> {
-    return this.http.get<Movie[]>(this.url).pipe(
+  getMovies(): Observable<ReadonlyArray<Movie>> {
+    return this.http.get<ReadonlyArray<Movie>>(this.url).pipe(
       catchError((error: HttpErrorResponse) => {
         console.error(error);
         return throwError(error);
@@ -21,7 +21,6 @@ export class DataService {
   }
 
   addMovies(movie: Movie): Observable<Movie> {
-    movie.id = null;
     return this.http.post<Movie>(this.url, movie).pipe(
       catchError((error: HttpErrorResponse) => {
         console.error(error);

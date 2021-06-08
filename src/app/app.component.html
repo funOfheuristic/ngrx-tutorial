@@ -19,10 +19,11 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
       <button (click)="addNewMovies()" style="margin-left: 33%;" mat-raised-button color="primary">Add Movie</button>
+      <button (click)="changeUser()" mat-raised-button color="secondary">Change User</button>
     </form>
   </div>
   <mat-divider></mat-divider>
   <div style="padding: 20px;">
-    <app-movie-list [movies]='movies' ></app-movie-list>
+    <app-movie-list></app-movie-list>
   </div>
 </div>

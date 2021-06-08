@@ -32,7 +32,8 @@ export class InMemoryService implements InMemoryDbService {
     const movie2 = new Movie(
       'Age of Ultron',
       1403,
-      new Date('01 May, 2015 05:30:00')
+      new Date('01 May, 2015 05:30:00'),
+      'Sanjit'
     );
     movie2.id = 3;
 
