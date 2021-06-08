@@ -12,7 +12,7 @@ import { InMemoryService } from './Service/in-memory.service';
 import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { environment } from '../environments/environment';
-import { movieReducer } from './Store/Reducers/movie.reducers';
+import { movieReducer, userReducer } from './Store/Reducers/movie.reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { MovieEffects } from './Store/Effects/movie.effects';
@@ -28,12 +28,12 @@ import { MovieEffects } from './Store/Effects/movie.effects';
     MaterialModules,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryService),
-    StoreModule.forRoot({ movies: movieReducer }),
+    StoreModule.forRoot({ movies: movieReducer, user: userReducer }),
+    EffectsModule.forRoot([MovieEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
     }),
-    EffectsModule.forRoot([MovieEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

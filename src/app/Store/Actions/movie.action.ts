@@ -17,3 +17,8 @@ export const addMoviesSuccess = createAction(
   // props<{ movie: Movie }>(),
   (movie: Movie) => ({ movie })
 );
+
+export const assignUser = createAction(
+  '[User] assign user',
+  (user: string) => ({ user })
+);
