@@ -2,7 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Movie } from './Models/movie';
 import { DataService } from './Service/data.service';
-import { addMovies, assignUser, getMovies } from './Store/Actions/movie.action';
+import {
+  addMovies,
+  assignUser,
+  getMovies,
+  logout,
+} from './Store/Actions/movie.action';
 
 @Component({
   selector: 'app-root',
@@ -38,5 +43,9 @@ export class AppComponent implements OnInit {
 
   changeUser(): void {
     this.store.dispatch(assignUser('Sanjit'));
+  }
+
+  logout(): void {
+    this.store.dispatch(logout());
   }
 }
