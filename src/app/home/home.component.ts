@@ -1,20 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Movie } from './Models/movie';
-import { DataService } from './Service/data.service';
-import {
-  addMovies,
-  assignUser,
-  getMovies,
-  logout,
-} from './Store/Actions/movie.action';
+import { Movie } from '../Models/movie';
+import { addMovies, assignUser, getMovies, logout } from '../Store/Actions/movie.action';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class AppComponent implements OnInit {
+export class HomeComponent implements OnInit {
+
   movies: Movie[] = [];
   newMovie: Movie = new Movie();
   title = 'movieApp';

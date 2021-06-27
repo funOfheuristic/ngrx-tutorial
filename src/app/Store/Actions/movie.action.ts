@@ -22,3 +22,5 @@ export const assignUser = createAction(
   '[User] assign user',
   (user: string) => ({ user })
 );
+
+export const logout = createAction('[User] logout');

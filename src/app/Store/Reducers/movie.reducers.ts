@@ -1,3 +1,4 @@
+import { RouterReducerState } from '@ngrx/router-store';
 import {
   createFeatureSelector,
   createReducer,
@@ -15,6 +16,7 @@ import {
 export interface MovieState {
   movies: ReadonlyArray<Movie>;
   user: Readonly<string>;
+  router: RouterReducerState<any>;
 }
 
 const initialState: ReadonlyArray<Movie> = [];
