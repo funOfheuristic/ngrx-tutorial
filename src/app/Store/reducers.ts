@@ -1,3 +1,4 @@
+import { routerReducer } from '@ngrx/router-store';
 import {
   ActionReducer,
   ActionReducerMap,
@@ -15,6 +16,7 @@ import {
 export const reducers: ActionReducerMap<MovieState> = {
   movies: movieReducer,
   user: userReducer,
+  router: routerReducer
 };
 
 const debugMeta = (reducer: ActionReducer<any>): ActionReducer<any> => {

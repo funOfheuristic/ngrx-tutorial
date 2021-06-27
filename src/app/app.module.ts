@@ -17,10 +17,19 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { MovieEffects } from './Store/Effects/movie.effects';
 import { reducers, metaReducers } from './Store/reducers';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { HomeComponent } from './home/home.component';
+import { MovieComponent } from './movie/movie.component';
+import { RouterSerializer } from './Store/routerSerializer';
 // import { reducers, metaReducers } from './reducers';
 
 @NgModule({
-  declarations: [AppComponent, MovieListComponent],
+  declarations: [
+    AppComponent,
+    MovieListComponent,
+    HomeComponent,
+    MovieComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -34,6 +43,9 @@ import { reducers, metaReducers } from './Store/reducers';
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
+    }),
+    StoreRouterConnectingModule.forRoot({
+      serializer: RouterSerializer,
     }),
   ],
   providers: [],
