@@ -38,7 +38,17 @@ import { RouterSerializer } from './Store/routerSerializer';
     MaterialModules,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryService),
-    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forRoot(reducers, {
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true,
+        strictStateSerializability: true,
+        strictActionSerializability: false,
+        strictActionWithinNgZone: true,
+        strictActionTypeUniqueness: true,
+      },
+      metaReducers,
+    }),
     EffectsModule.forRoot([MovieEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

@@ -10,7 +10,9 @@ import {
   addMovies,
   addMoviesSuccess,
   assignUser,
+  deleteMovieSuccess,
   getMoviesSuccess,
+  updateMovieSuccess,
 } from '../Actions/movie.action';
 
 export interface MovieState {
@@ -24,7 +26,19 @@ const initialState: ReadonlyArray<Movie> = [];
 export const movieReducer = createReducer(
   initialState,
   on(getMoviesSuccess, (state, { movies }) => [...movies]),
-  on(addMoviesSuccess, (state, { movie }) => [...state, movie])
+  on(addMoviesSuccess, (state, { movie }) => [...state, movie]),
+  on(deleteMovieSuccess, (state, { movieId }) =>
+    state.filter((movie) => movie.id !== movieId)
+  ),
+  on(updateMovieSuccess, (state, { movie }) => {
+    const movies = state.map((m) => {
+      if (m.id === movie.id) {
+        return movie;
+      }
+      return m;
+    });
+    return movies;
+  })
 );
 
 const initialUserSate = '';
