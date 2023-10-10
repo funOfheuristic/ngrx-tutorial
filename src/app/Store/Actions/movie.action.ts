@@ -23,24 +23,4 @@ export const assignUser = createAction(
   (user: string) => ({ user })
 );
 
-export const deleteMovie = createAction(
-  '[Movie] Delete movie',
-  (movieId: number) => ({ movieId })
-);
-
-export const deleteMovieSuccess = createAction(
-  '[Movie] Delete movie success',
-  (movieId: number) => ({ movieId })
-);
-
-export const updateMovie = createAction(
-  '[Movie] Update movie',
-  (movie: Movie) => ({ movie })
-);
-
-export const updateMovieSuccess = createAction(
-  '[Movie] Update movie success',
-  (movie: Movie) => ({ movie })
-);
-
 export const logout = createAction('[User] logout');

@@ -1,19 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Movie } from '../Models/movie';
-import {
-  addMovies,
-  assignUser,
-  getMovies,
-  logout,
-} from '../Store/Actions/movie.action';
+import { addMovies, assignUser, getMovies, logout } from '../Store/Actions/movie.action';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
   movies: Movie[] = [];
   newMovie: Movie = new Movie();
   title = 'movieApp';

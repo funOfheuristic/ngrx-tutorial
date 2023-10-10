@@ -3,18 +3,3 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-}
-
-.example-full-width {
-  width: 100%;
-}
-
-.example-flex-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
