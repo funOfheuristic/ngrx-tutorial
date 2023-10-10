@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Movie } from '../Models/movie';
 import { DataService } from '../Service/data.service';
@@ -15,12 +15,12 @@ import {
   styleUrls: ['./movie-list.component.css'],
 })
 export class MovieListComponent implements OnInit {
-  movies$ = this.store.pipe(select(greater(1000)));
-  constructor(private store: Store<MovieState>) {}
+  private readonly store = inject(Store<MovieState>);
+  movies = this.store.selectSignal(greater(1000));
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.movies$ = this.store.pipe(select(greater(2000)));
+      this.movies = this.store.selectSignal(greater(2000));
     }, 5000);
   }
 }

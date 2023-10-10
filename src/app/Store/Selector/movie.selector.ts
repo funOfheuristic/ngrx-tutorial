@@ -1,4 +1,4 @@
-import { getSelectors, RouterReducerState } from '@ngrx/router-store';
+import { getRouterSelectors, RouterReducerState } from '@ngrx/router-store';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { Movie } from 'src/app/Models/movie';
 import { MovieState } from '../Reducers/movie.reducers';
@@ -37,7 +37,7 @@ export const {
   selectRouteParam, // factory function to select a route param
   selectRouteData, // select the current route data
   selectUrl, // select the current url
-} = getSelectors(selectRouter);
+} = getRouterSelectors(selectRouter);
 
 export const movie = createSelector(
   movieSelector,

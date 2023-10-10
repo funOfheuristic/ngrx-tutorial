@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { Movie } from '../Models/movie';
@@ -11,8 +11,8 @@ import { movie } from '../Store/Selector/movie.selector';
   styleUrls: ['./movie.component.css'],
 })
 export class MovieComponent implements OnInit {
+  private readonly store = inject(Store<MovieState>);
   movie$ = this.store.pipe(select(movie));
-  constructor(private store: Store<MovieState>) {}
 
   ngOnInit(): void {}
 }

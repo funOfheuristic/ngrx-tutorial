@@ -1,10 +1,9 @@
 <div class="movies">
-    <section *ngFor="let movie of movies$ | async">
-        <mat-card routerLink='/{{movie.id}}'>
-            <h1> {{movie.name}} </h1>
-            <h2> {{ movie.releaseDate | date }} </h2>
-            <h3> ${{ movie.earning }} million </h3>
-        </mat-card>
-    </section>
+  <section *ngFor="let movie of movies()">
+    <mat-card routerLink="/{{ movie.id }}" style="padding: 20px">
+      <h1>{{ movie.name }}</h1>
+      <h2>{{ movie.releaseDate | date }}</h2>
+      <h3>${{ movie.earning }} million</h3>
+    </mat-card>
+  </section>
 </div>
-

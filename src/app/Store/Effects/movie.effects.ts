@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
-import { EmptyError } from 'rxjs';
+import { EMPTY } from 'rxjs';
 import { catchError, concatMap, exhaustMap, map, tap } from 'rxjs/operators';
 import { DataService } from 'src/app/Service/data.service';
 import {
@@ -12,13 +12,16 @@ import {
 
 @Injectable()
 export class MovieEffects {
+  private readonly action$ = inject(Actions);
+  private readonly dataService = inject(DataService);
+
   loadMovie$ = createEffect(() =>
     this.action$.pipe(
       ofType(getMovies),
       exhaustMap(() =>
         this.dataService.getMovies().pipe(
           map((movies) => getMoviesSuccess(movies)),
-          catchError(() => EmptyError)
+          catchError(() => EMPTY)
         )
       )
     )
@@ -31,11 +34,9 @@ export class MovieEffects {
       concatMap(({ movie }) =>
         this.dataService.addMovies(movie).pipe(
           map((newMovie) => addMoviesSuccess(newMovie)),
-          catchError(() => EmptyError)
+          catchError(() => EMPTY)
         )
       )
     )
   );
-
-  constructor(private action$: Actions, private dataService: DataService) {}
 }
